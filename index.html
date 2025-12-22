@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoloAPI - 企业级AI大模型API源头供应商</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #da7a5a;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --text-secondary: #666;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-radius: 10px;
+            --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', '微软雅黑', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .wrapper {
+            padding: 100px 0 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            padding: 0 30px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+     .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+        }
+
+
+
+
+        
+/* 让 PoloAPI 有高级渐变+流动效果 */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+ margin-top: 40px;
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 15px;
+  line-height: 1;
+
+  /* 渐变文字 + 流动动画 */
+  background: linear-gradient(
+    120deg,
+    var(--primary-color),
+    #8b5cf6,
+    var(--primary-color)
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: logo-gradient-move 8s ease-in-out infinite;
+}
+
+/* 鼠标移上去，轻微放大一点，更有“活着”的感觉 */
+.logo:hover {
+  transform: translateY(-1px) scale(1.01);
+  transition: transform 0.3s ease;
+}
+
+/* 徽章：轻微流动 + 发光 */
+.logo-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 999px;
+  vertical-align: super;
+  margin-left: 10px;
+
+  background: linear-gradient(
+    120deg,
+    var(--secondary-color),
+    #6366f1,
+    var(--secondary-color)
+  );
+  background-size: 220% 100%;
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25),
+              0 6px 16px rgba(15, 23, 42, 0.25);
+
+  animation: badge-gradient-move 5s linear infinite;
+}
+
+/* 鼠标移到徽章上，有一点点呼吸缩放 */
+.logo-badge:hover {
+  transform: translateY(-1px) scale(1.03);
+  transition: transform 0.25s ease;
+}
+
+/* Logo 渐变缓慢左右流动 */
+@keyframes logo-gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 徽章渐变更快一点，像微弱的能量流动 */
+@keyframes badge-gradient-move {
+  0% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25),
+                0 4px 12px rgba(15, 23, 42, 0.20);
+  }
+  50% {
+    background-position: 100% 50%;
+    box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.45),
+                0 8px 20px rgba(79, 70, 229, 0.35);
+  }
+  100% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.25),
+                0 4px 12px rgba(15, 23, 42, 0.20);
+  }
+}
+
+
+        
+       
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .headline {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+        
+        .headline span {
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .headline span:after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(218, 122, 90, 0.2);
+            z-index: -1;
+        }
+        
+        .subheadline {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .emphasized {
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        .buttons {
+            margin: 50px 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .button {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 36px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            background-color: #c86a4a;
+        }
+        
+.button.secondary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #6366F1, #8B5CF6);
+    border: none;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    /* 动态渐变背景 */
+    background-size: 200% 100%;
+    animation: btn-gradient-move 5s linear infinite;
+}
+
+/* 悬停：轻微浮起 */
+.button.secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99,102,241,0.35);
+}
+
+/* 光线扫过动画 */
+.button.secondary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.4) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.button.secondary:hover::after {
+    animation: btn-shine 0.9s ease;
+    opacity: 1;
+}
+
+/* 渐变左右流动 */
+@keyframes btn-gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 亮光滑过动画 */
+@keyframes btn-shine {
+    0% { left: -80%; }
+    100% { left: 120%; }
+}
+
+
+
+        
+        .button i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            margin: 80px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-weight: 700;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-card:hover:before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .feature-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background: rgba(218, 122, 90, 0.08);
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-size: 1.1rem;
+        }
+        
+        .price-example {
+            background: rgba(44, 62, 80, 0.05);
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .price-example strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+            margin: 50px 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+            margin: 35px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            border-bottom-color: var(--secondary-color);
+        }
+        
+        .contact-icon {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .contact-text {
+            font-weight: 500;
+        }
+        
+        .links-section {
+            margin: 40px 0;
+        }
+        
+        .link-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .link-item:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .link-icon {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .link-text {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .link-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .link-text a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        .notice {
+            background: rgba(255, 242, 242, 0.8);
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px 25px;
+            margin: 35px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .notice p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .notice p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .notice-icon {
+            color: var(--secondary-color);
+            margin-right: 12px;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+        
+        .model-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .model-badge {
+            background: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .model-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .model-badge i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .gallery-caption {
+            padding: 15px;
+            background: white;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        .tech-architecture {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .team-section {
+            background: white;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 60px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid rgba(218, 122, 90, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .member-title {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            margin-top: 80px;
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.7);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 25px;
+            }
+            
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .headline {
+                font-size: 2.2rem;
+            }
+            
+            .subheadline {
+                font-size: 1.4rem;
+            }
+            
+            .image-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 70px 0 50px;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .headline {
+                font-size: 1.8rem;
+            }
+            
+            .subheadline {
+                font-size: 1.2rem;
+            }
+            
+            .description {
+                font-size: 1.1rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <header class="header">
+          
+
+                            <div class="logo">
+  PoloAPI - <span>企业级AI聚合平台</span>
+  <span class="logo-badge">源头供应商</span>
+                              
+</div>
+
+
+            
+                <h1 class="headline">全球AI大模型<span>源头直供</span></h1>
+          
+                <p class="description">作为上游API供应商，我们提供<strong class="emphasized">企业级高并发支持</strong>、<strong class="emphasized">官方5折起的源头价格</strong>以及<strong class="emphasized">7×24小时技术支持</strong>，助力企业快速接入全球领先AI能力</p>
+                
+                <div class="model-badges">
+                    <div class="model-badge"><i class="fab fa-openai"></i> OpenAI</div>
+                    <div class="model-badge"><i class="fas fa-robot"></i> Claude</div>
+                    <div class="model-badge"><i class="fab fa-google"></i> Gemini</div>
+                    <div class="model-badge"><i class="fab fa-x-twitter"></i> Grok</div>
+                    <div class="model-badge"><i class="fas fa-brain"></i> Deepseek</div>
+                    <div class="model-badge"><i class="fas fa-brain"></i> Qwen</div>
+                     <div class="model-badge"><i class="fas fa-brain"></i> Doubao</div>
+                      
+                </div>
+                             
+                <div class="buttons">
+                    <a href="https://poloapi.top/detail" class="button secondary"><i class="fas fa-rocket"></i>自助体验</a>
+                    <a href="https://polodaili.apifox.cn/" class="button secondary"><i class="fas fa-book"></i>开发文档</a>
+                    <a href="https://poloapi.top/about" class="button secondary"><i class="fas fa-book"></i>联系微信：Jemes1002</a>
+                </div>
+            </header>
+<div class="section">
+                <h2 class="section-title">联系我们</h2>
+    <ul style="margin-top: 15px; margin-left: 20px;">
+                            <li>作为上游供应商，我们不仅提供API服务，也有自主开发的产品：大模型微调、量化投资、AI落地应用等，如有机会可以深入合作。</li>
+                            <li>选择我们的几大主要原因：比官方更低的价格、无须充值所有平台更方便、低成本学习更多api技术解决方案</li>
+                            <li>公司位于美丽大广州，另有海内外主体，欢迎企业客户洽谈咨询。</li>
+                        </ul>
+              
+
+
+                       <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-weixin"></i>
+                        </div>
+                         <div class="contact-text">联系微信：Jemes1002</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-qq"></i>
+                        </div>
+                        <div class="contact-text">QQ：2231692111</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <div class="contact-text">Telegram：@dao22work</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">商务合作：ring80127@gmail.com</div>
+                    </div>
+                </div>
+              
+                 <h3 class="section-title">价格分组</h3>
+    <ul style="margin-top: 15px; margin-left: 20px;">
+                            <li>Claude Gpt Gemini AWS直连官key - 4.8元/刀</li>
+                            <li>Claude AZ渠道 - 0.7元/刀</li>
+                            <li>Claude逆向 纯MAX号池 - 0.6元/刀</li>
+                        </ul>
+               
+            </div>
+            
+            
+            <div class="section">
+                <h2 class="section-title">源头优势 价格透明 企业对公</h2>
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="API接口示意图" class="feature-image">
+                    <h3 class="feature-title">直接供应 成本最优</h3>
+                    <div class="feature-content">
+                        <p>作为上游API供应商，我们直接对接各大模型厂商，省去中间环节，为您提供最具竞争力的价格。</p>
+                        <div class="price-example">
+                            <strong>价格示例：</strong>Claude aws 官分组倍率为 *3.5，该模型价格为官方5折（3.5/7.26）
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card" style="margin-top: 30px;">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="企业服务" class="feature-image">
+                    <h3 class="feature-title">企业专项服务</h3>
+                    <div class="feature-content">
+                        <p>支持企业客户定制化需求，包括：</p>
+                        <ul style="margin-top: 15px; margin-left: 20px;">
+                            <li>高并发API接入方案</li>
+                            <li>专属技术支持团队</li>
+                            <li>阶梯式折扣价格</li>
+                            <li>灵活的开票方式（支持个人、对公、海外账户）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h2 class="section-title">技术架构</h2>
+                <img src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="技术架构图" class="tech-architecture">
+                <p style="text-align: center; margin-top: 15px; color: var(--text-secondary);">我们的多节点负载均衡架构确保99.9%的服务可用性</p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h2 class="section-title">核心优势</h2>
+                <div class="highlight-box">
+                    <p>注册即赠$2测试额度 | 企业客户可申请更高测试额度 | 7×24小时技术支持</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="快速接入" class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="feature-title">极速接入</h3>
+                        <div class="feature-content">
+                            <p>简单注册即可获得API密钥，支持RESTful接口调用，兼容主流开发语言，5分钟完成接入。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="企业级稳定" class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">企业级稳定</h3>
+                        <div class="feature-content">
+                            <p>99.9% SLA保障，多节点负载均衡，自动故障转移，满足企业生产环境需求。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="性能监控" class="feature-image">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="feature-title">性能监控</h3>
+                        <div class="feature-content">
+                            <p>提供实时用量监控、性能分析面板，帮助企业优化API调用策略，降低成本。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">应用场景</h2>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.5db08be631006ecd1b1c33e56d3d36a5?rik=j3LmTpm4fEc8tA&riu=http%3a%2f%2fwww.ounistar.com%2fuploads%2fallimg%2f210303%2f1-210303104F3504.png&ehk=8aDdMGoEmhKjr5w0PZqiNzwCYkz%2bGt4JIG37iNt5hIU%3d&risl=&pid=ImgRaw&r=0" alt="智能客服" class="gallery-image">
+                        <div class="gallery-caption">智能客服系统</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="内容生成" class="gallery-image">
+                        <div class="gallery-caption">AI内容生成</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.5-u54kFk3_7q2VGLfydemAAAAA?r=0&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3" alt="数据分析" class="gallery-image">
+                        <div class="gallery-caption">AI教育辅导</div>
+                    </div>
+                </div>
+            </div>
+            
+        
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+             <h2 class="section-title">联系我们</h2>
+    <ul style="margin-top: 15px; margin-left: 20px;">
+                            <li>作为上游供应商，我们不仅提供API服务，也有自主开发的产品：大模型微调、量化投资、AI落地应用等，如有机会可以深入合作。</li>
+                            <li>选择我们的几大主要原因：比官方更低的价格、无须充值所有平台更方便、低成本学习更多api技术解决方案</li>
+                            <li>公司位于美丽大广州，另有海内外主体，欢迎企业客户洽谈咨询。</li>
+                        </ul>
+              
+
+
+                       <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-weixin"></i>
+                        </div>
+                         <div class="contact-text">联系微信：Jemes1002</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-qq"></i>
+                        </div>
+                        <div class="contact-text">QQ：2231692111</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <div class="contact-text">Telegram：@dao22work</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">商务合作：ring80127@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div class="links-section">
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="link-text">
+                            <strong>商务合作：源头号池，全球渠道，有上千大企业服务案例，支持国内外主体对公合作！微信：Jemes1002</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="link-text">
+                            <strong>演示平台：</strong><a href="https://www.cherry-ai.com/" target="_blank">https://www.cherry-ai.com/</a>
+                        </div>
+                    </div>
+                    
+                    <div class="link-item">
+                        <div class="link-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="link-text">
+                            <strong>技术文档：</strong><a href="https://polodaili.apifox.cn/" target="_blank">https://polodaili.apifox.cn/</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="notice">
+                    <p><i class="fas fa-info-circle notice-icon"></i> 专业提示：我们提供API调用优化建议，帮助企业降低使用成本，提高响应速度。</p>
+                    <p><i class="fas fa-exclamation-circle notice-icon"></i> 企业客户可申请专属技术顾问，解决复杂集成问题。</p>
+                </div>
+            </div>
+            
+            <footer class="footer">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">服务条款</a>
+                    <a href="#" class="footer-link">隐私政策</a>
+                    <a href="#" class="footer-link">API状态</a>
+                    <a href="#" class="footer-link">企业合作</a>
+                </div>
+                <p>&copy; 2025 PoloAPI - 企业级AI大模型API源头供应商. 保留所有权利.</p>
+
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+              
